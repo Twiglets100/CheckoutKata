@@ -44,7 +44,7 @@ namespace CheckoutKata.Logic
                               _itemTypes.FirstOrDefault(itemType => itemType.Name == "A").Price;
             }
             
-            return totalPrice;
+            return totalPrice; // TODO: Add Offer model onto Product, then compare Product Offer to _items to determine if offer needs applying.
         }
     }
 }

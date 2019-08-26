@@ -7,16 +7,17 @@ namespace CheckoutKata.Test
     [TestFixture]
     public class CheckoutTests
     {
-        [Test]
-        public void WhenProductAIsAdded_GetTotalReturns50()
+        [TestCase("A",50)]
+        [TestCase("B",30)]
+        public void WhenProductIsAdded_GetTotalReturnsItemTypePrice(string item, int expectedResult)
         {
             ICheckout checkout = new Checkout(new FileLoader());
             var totalPrice = 0;
 
-            checkout.Scan("A");
+            checkout.Scan(item);
             totalPrice = checkout.GetTotalPrice();
             
-            Assert.AreEqual(50,totalPrice);
+            Assert.AreEqual(expectedResult,totalPrice);
         }
     }
 }

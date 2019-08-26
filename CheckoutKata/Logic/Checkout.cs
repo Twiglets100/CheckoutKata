@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CheckoutKata.Interfaces;
@@ -17,6 +18,10 @@ namespace CheckoutKata.Logic
 
         public void Scan(string item)
         {
+            if (!_itemTypes.Exists(itemType => itemType.Name == item))
+            {
+                throw new ArgumentOutOfRangeException(item);
+            }
             _items = item;
         }
 

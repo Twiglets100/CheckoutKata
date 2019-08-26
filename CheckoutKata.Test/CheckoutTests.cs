@@ -28,5 +28,19 @@ namespace CheckoutKata.Test
             
             Assert.Throws<ArgumentOutOfRangeException>(() => checkout.Scan("invalidItem"));
         }
+
+        [Test]
+        public void WhenTwoDifferentProductsAreScanned_GetTotalPriceReturnsTheSumOfTheirPrice()
+        {
+            ICheckout checkout = new Checkout(new FileLoader());
+            var totalPrice = 0;
+            
+            checkout.Scan("A");
+            checkout.Scan("B");
+            totalPrice = checkout.GetTotalPrice();
+            
+            Assert.AreEqual(80, totalPrice);
+
+        }
     }
 }

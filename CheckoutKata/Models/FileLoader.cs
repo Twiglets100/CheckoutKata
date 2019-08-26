@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using CheckoutKata.Interfaces;
 
-namespace CheckoutKata
+namespace CheckoutKata.Models
 {
     public class FileLoader : IStockLoader
     {

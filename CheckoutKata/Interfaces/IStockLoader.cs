@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CheckoutKata
+namespace CheckoutKata.Interfaces
 {
     public interface IStockLoader
     {

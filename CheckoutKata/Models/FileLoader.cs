@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.IO;
 using CheckoutKata.Interfaces;
+using Newtonsoft.Json;
 
 namespace CheckoutKata.Models
 {
@@ -7,7 +9,15 @@ namespace CheckoutKata.Models
     {
         public List<Item> LoadStock(string uri)
         {
-            return new List<Item>();
+            List<Item> items;
+            
+            using (StreamReader r = new StreamReader(uri))
+            {
+                string json = r.ReadToEnd();
+                items = JsonConvert.DeserializeObject<List<Item>>(json);
+            }
+
+            return items;
         }
     }
 }

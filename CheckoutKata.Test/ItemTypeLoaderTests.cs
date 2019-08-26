@@ -21,7 +21,7 @@ namespace CheckoutKata.Test
         [TestCaseSource(nameof(Loaders))]
         public void GivenUri_ReturnStockList(IStockLoader stockLoader)
         {
-            var uri = "StockList.json";
+            var uri = "../../../../CheckoutKata/StockList.json";
 
             var stock = stockLoader.LoadStock(uri);
             

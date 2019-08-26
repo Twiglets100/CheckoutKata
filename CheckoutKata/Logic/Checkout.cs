@@ -27,12 +27,11 @@ namespace CheckoutKata.Logic
 
         public int GetTotalPrice()
         {
-            if (_items.Count == 1)
-            {
-                return _itemTypes.FirstOrDefault(item => item.Name == _items[0]).Price;
-            }
-            return _itemTypes.FirstOrDefault(item => item.Name == _items[0]).Price +
-                   _itemTypes.FirstOrDefault(item => item.Name == _items[1]).Price;
+            var totalPrice = 0;
+            
+            _items.ForEach(item => { totalPrice += _itemTypes.FirstOrDefault(itemType => itemType.Name == item).Price; });
+            
+            return totalPrice;
         }
     }
 }

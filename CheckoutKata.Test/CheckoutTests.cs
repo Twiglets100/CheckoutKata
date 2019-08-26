@@ -1,3 +1,4 @@
+using System;
 using CheckoutKata.Interfaces;
 using CheckoutKata.Logic;
 using NUnit.Framework;
@@ -18,6 +19,14 @@ namespace CheckoutKata.Test
             totalPrice = checkout.GetTotalPrice();
             
             Assert.AreEqual(expectedResult,totalPrice);
+        }
+
+        [Test]
+        public void WhenInvalidProductIsScanned_ThrowArgumentOutOfRangeException()
+        {
+            ICheckout checkout = new Checkout(new FileLoader());
+            
+            Assert.Throws<ArgumentOutOfRangeException>(() => checkout.Scan("invalidItem"));
         }
     }
 }

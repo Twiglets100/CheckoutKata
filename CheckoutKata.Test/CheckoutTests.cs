@@ -1,4 +1,5 @@
-using CheckoutKata.Models;
+using CheckoutKata.Interfaces;
+using CheckoutKata.Logic;
 using NUnit.Framework;
 
 namespace CheckoutKata.Test

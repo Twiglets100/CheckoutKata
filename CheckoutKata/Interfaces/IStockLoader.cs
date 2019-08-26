@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CheckoutKata.Models;
 
 namespace CheckoutKata.Interfaces
 {

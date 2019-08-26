@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using CheckoutKata.Interfaces;
-using CheckoutKata.Models;
 using NUnit.Framework;
 
 namespace CheckoutKata.Test

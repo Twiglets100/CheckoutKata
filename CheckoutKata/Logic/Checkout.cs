@@ -29,11 +29,20 @@ namespace CheckoutKata.Logic
         {
             var totalPrice = 0;
 
-            if (_items.Where(item => item == "A").ToList().Count == 3)
+            if (_items.Where(item => item == "A").ToList().Count >= 3)
             {
-                return 130;
+                totalPrice += 130;
             }
-            _items.ForEach(item => { totalPrice += _itemTypes.FirstOrDefault(itemType => itemType.Name == item).Price; });
+
+            if (_items.Where(item => item == "A").ToList().Count < 3)
+            {
+                _items.ForEach(item => { totalPrice += _itemTypes.FirstOrDefault(itemType => itemType.Name == item).Price; });
+            }
+            else
+            {
+                totalPrice += _items.Where(item => item == "A").ToList().Count % 3 *
+                              _itemTypes.FirstOrDefault(itemType => itemType.Name == "A").Price;
+            }
             
             return totalPrice;
         }

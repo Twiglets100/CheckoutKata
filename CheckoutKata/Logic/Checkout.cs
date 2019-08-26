@@ -9,7 +9,7 @@ namespace CheckoutKata.Logic
     public class Checkout: ICheckout
     {
         private readonly List<Item> _itemTypes;
-        private string _items;
+        private readonly List<string> _items = new List<string>();
         
         public Checkout(IStockLoader fileLoader)
         {
@@ -22,12 +22,17 @@ namespace CheckoutKata.Logic
             {
                 throw new ArgumentOutOfRangeException(item);
             }
-            _items = item;
+            _items.Add(item);
         }
 
         public int GetTotalPrice()
         {
-            return _itemTypes.FirstOrDefault(item => item.Name == _items).Price;
+            if (_items.Count == 1)
+            {
+                return _itemTypes.FirstOrDefault(item => item.Name == _items[0]).Price;
+            }
+            return _itemTypes.FirstOrDefault(item => item.Name == _items[0]).Price +
+                   _itemTypes.FirstOrDefault(item => item.Name == _items[1]).Price;
         }
     }
 }

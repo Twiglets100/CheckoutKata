@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using CheckoutKata.Interfaces;
 using CheckoutKata.Models;
@@ -26,6 +27,14 @@ namespace CheckoutKata.Test
             var stock = stockLoader.LoadStock(uri);
             
             Assert.True(stock.Any());
+        }
+
+        [TestCaseSource(nameof(Loaders))]
+        public void GivenInvalidUri_ThrowArgumentException(IStockLoader stockLoader)
+        {
+            var uri = "invalidFile.txt";
+
+            Assert.Throws<FileNotFoundException>(() => stockLoader.LoadStock(uri));
         }
     }
 }

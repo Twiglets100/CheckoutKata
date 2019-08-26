@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.IO;
 using CheckoutKata.Interfaces;
+using CheckoutKata.Models;
 using Newtonsoft.Json;
 
-namespace CheckoutKata.Models
+namespace CheckoutKata
 {
     public class FileLoader : IStockLoader
     {

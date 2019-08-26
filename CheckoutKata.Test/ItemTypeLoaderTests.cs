@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace CheckoutKata.Test
@@ -21,7 +22,7 @@ namespace CheckoutKata.Test
 
             var stock = stockLoader.LoadStock(uri);
             
-            Assert.IsTrue(stock.Any());
+            Assert.IsNotNull(stock);
         }
     }
 }
